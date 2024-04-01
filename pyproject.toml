@@ -1,0 +1,24 @@
+[project]
+name = "git-twigs"
+authors = [{name = "Paco Sevilla", email = "paco.sevilla@live.com"}]
+urls = {Home = "https://github.com/paco-sevilla/git-twigs"}
+readme = "README.md"
+license = {file = "LICENSE"}
+requires-python = ">=3.10"
+dynamic = ["version", "description"]
+dependencies = [
+    "click ~=8.1.7",
+    "pygit2 ~=1.14.1",
+]
+
+[project.optional-dependencies]
+dev = [
+    "flit ~=3.9.0",
+]
+
+[project.scripts]
+git-twigs = "git_twigs.cli:main"
+
+[build-system]
+requires = ["flit_core >=3.2,<4"]
+build-backend = "flit_core.buildapi"
