@@ -1,0 +1,73 @@
+version: 0.1
+cli:
+  version: 1.21.0
+
+plugins:
+  sources:
+    - id: trunk
+      ref: v1.4.5
+      uri: https://github.com/trunk-io/plugins
+
+runtimes:
+  enabled:
+    - node@18.12.1
+    - python@3.10.8
+
+lint:
+  enabled:
+    # All
+    - cspell@8.6.1
+    - git-diff-check
+
+    # Bash
+    - shellcheck@0.10.0
+    - shfmt@3.6.0
+
+    # Markdown
+    - markdownlint@0.39.0
+    - prettier@3.2.5
+
+    # Python
+    - mypy@1.9.0
+    - ruff@0.3.4
+    - yapf@0.40.2
+
+    # Security
+    - checkov@3.2.50
+    - trivy@0.50.1
+    - trufflehog@3.71.0
+
+    # TOML
+    - taplo@0.8.1
+
+    # YAML
+    - yamllint@1.35.1
+  disabled:
+    - isort
+    - black
+    - bandit
+
+  # Non-default linter definitions
+  definitions:
+    # Set the cache directory for mypy
+    - name: mypy
+      commands:
+        - name: lint
+          # trunk-ignore(cspell): cachedir
+          run: mypy --show-column-numbers --show-error-codes --cache-dir=${cachedir} ${target}
+
+    # Set the severity of cspell to `(info)`
+    - name: cspell
+      commands:
+        - name: lint
+          parse_regex: (\((?P<severity>.*)\) (?P<path>.*):(?P<line>\d+):(?P<col>\d+) - (?P<message>.*))
+          parser:
+            run: awk '{print "(info) "$0}'
+
+actions:
+  enabled:
+    - trunk-upgrade-available
+  disabled:
+    - trunk-announce
+    - trunk-check-pre-push
+    - trunk-fmt-pre-commit
