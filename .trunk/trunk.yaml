@@ -31,7 +31,8 @@ lint:
     - markdownlint@0.39.0
 
     # Python
-    - mypy@1.9.0
+    - mypy@1.9.0:
+        packages: [click@8.1.7, pygit2@1.14.1, pytest@8.1.1]
     - ruff@0.3.4
     - yapf@0.40.2
 
