@@ -1,0 +1,15 @@
+{
+    // Only add settings that are relevant for all users.
+    "[github-actions-workflow]": {
+        "editor.tabSize": 2
+    },
+    "[yaml]": {
+        "editor.tabSize": 2
+    },
+    "editor.defaultFormatter": "trunk.io",
+    "editor.detectIndentation": false,
+    "editor.rulers": [120],
+    "editor.tabSize": 4,
+    "files.insertFinalNewline": true,
+    "python.testing.pytestEnabled": true
+}

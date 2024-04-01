@@ -1,0 +1,10 @@
+{
+    "recommendations": [
+        // List of extensions recommended for users of this workspace.
+        "ms-python.python",
+        "trunk.io"
+    ],
+    "unwantedRecommendations": [
+        // List of extensions recommended by VS Code that should not be recommended for users of this workspace.
+    ]
+}
