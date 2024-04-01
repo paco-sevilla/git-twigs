@@ -55,6 +55,10 @@ select = ["ALL"]
 ignore = [
     "SIM103", # https://docs.astral.sh/ruff/rules/needless-bool/: Explicit bools can be more readable than conditions
 ]
+per-file-ignores = { "**/tests/*" = [
+    "INP001", # https://docs.astral.sh/ruff/rules/implicit-namespace-package/: Tests don't need a `__init__.py`
+    "S101",   # https://docs.astral.sh/ruff/rules/assert/: Allow `assert` statements in tests
+] }
 preview = true
 
 [tool.ruff.lint.pydocstyle]
