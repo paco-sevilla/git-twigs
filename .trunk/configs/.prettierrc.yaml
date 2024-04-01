@@ -1,0 +1,10 @@
+plugins: [prettier-plugin-sort-json]
+printWidth: 120
+tabWidth: 4
+semi: false
+trailingComma: all
+jsonRecursiveSort: true
+overrides:
+  - files: ["*.yaml", "*.yml"]
+    options:
+      tabWidth: 2

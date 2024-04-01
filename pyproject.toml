@@ -1,19 +1,25 @@
 [project]
 name = "git-twigs"
-authors = [{name = "Paco Sevilla", email = "paco.sevilla@live.com"}]
-urls = {Home = "https://github.com/paco-sevilla/git-twigs"}
+authors = [
+    { name = "Paco Sevilla", email = "paco.sevilla@live.com" }, # trunk-ignore(cspell)
+]
+urls = { Home = "https://github.com/paco-sevilla/git-twigs" }
 readme = "README.md"
-license = {file = "LICENSE"}
+license = { file = "LICENSE" }
 requires-python = ">=3.10"
-dynamic = ["version", "description"]
+dynamic = ["description", "version"]
 dependencies = [
+    # Please keep in alphabetical order!
     "click ~=8.1.7",
     "pygit2 ~=1.14.1",
 ]
 
 [project.optional-dependencies]
 dev = [
+    # Please keep in alphabetical order!
     "flit ~=3.9.0",
+    "pytest ~=8.1.1",
+    "pytest-dependency ~=0.6.0",
 ]
 
 [project.scripts]
@@ -22,3 +28,43 @@ git-twigs = "git_twigs.cli:main"
 [build-system]
 requires = ["flit_core >=3.2,<4"]
 build-backend = "flit_core.buildapi"
+
+[tool.mypy]
+python_version = "3.10"
+mypy_path = "$MYPY_CONFIG_FILE_DIR"
+explicit_package_bases = true
+warn_return_any = true
+disallow_untyped_defs = true
+
+[tool.pylint.format]
+max-line-length = 120
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+python_functions = "test_*"
+python_classes = "Test*"
+addopts = "--import-mode=importlib"
+required_plugins = ["pytest-dependency"]
+automark_dependency = true
+
+[tool.ruff]
+line-length = 120
+
+[tool.ruff.lint]
+select = ["ALL"]
+ignore = [
+    "SIM103", # https://docs.astral.sh/ruff/rules/needless-bool/: Explicit bools can be more readable than conditions
+]
+preview = true
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"
+
+[tool.ruff.lint.pylint]
+max-args = 10
+max-positional-args = 4
+
+[tool.yapf]
+based_on_style = "google"
+column_limit = 120
+indent_width = 4

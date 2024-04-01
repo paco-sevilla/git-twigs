@@ -1,0 +1,50 @@
+{
+    "dictionaries": ["en_US", "bash", "python"],
+    "flagWords": [
+        // List of words to be always considered incorrect (Please use lowercase!)
+    ],
+    "ignorePaths": [".cspell.json", "LICENSE"],
+    "languageSettings": [
+        // Language specific settings. The list of languageIds can be found here:
+        // https://github.com/streetsidesoftware/cspell/blob/v8.4.1/packages/cspell-lib/src/lib/LanguageIds.ts#L33-L261
+        {
+            "languageId": "python",
+            "words": [
+                // List of words to be considered correct in Python (Please use lowercase!)
+            ]
+        }
+    ],
+    "overrides": [
+        {
+            "filename": "pyproject.toml",
+            "words": [
+                // List of words to be considered correct in pyproject.toml (Please use lowercase!)
+                "addopts",
+                "automark",
+                "buildapi",
+                "mypy",
+                "pydocstyle",
+                "pylint",
+                "pythonpath",
+                "yapf"
+            ]
+        },
+        {
+            "filename": ".trunk/**",
+            "words": [
+                // List of words to be considered correct in .trunk configs (Please use lowercase!)
+                "cachedir",
+                "isort",
+                "markdownlint",
+                "mypy",
+                "runtimes",
+                "scriptdir",
+                "shellcheck"
+            ]
+        }
+    ],
+    "words": [
+        // List of words to be always considered correct (Please use lowercase!)
+        "pygit"
+    ]
+}

@@ -23,9 +23,12 @@ lint:
     - shellcheck@0.10.0
     - shfmt@3.6.0
 
+    # JSON
+    - prettier@3.2.5:
+        packages: [prettier-plugin-sort-json@4.0.0]
+
     # Markdown
     - markdownlint@0.39.0
-    - prettier@3.2.5
 
     # Python
     - mypy@1.9.0
@@ -53,7 +56,6 @@ lint:
     - name: mypy
       commands:
         - name: lint
-          # trunk-ignore(cspell): cachedir
           run: mypy --show-column-numbers --show-error-codes --cache-dir=${cachedir} ${target}
 
     # Set the severity of cspell to `(info)`
